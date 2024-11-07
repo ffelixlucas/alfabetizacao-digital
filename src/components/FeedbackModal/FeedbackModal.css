@@ -1,0 +1,55 @@
+.feedback-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+}
+
+.feedback-modal.acerto {
+  background-color: rgba(40, 167, 69, 0.5);
+  animation: piscaVerde 1s ease-in-out;
+}
+
+.feedback-modal.erro {
+  background-color: rgba(220, 53, 69, 0.5);
+  animation: piscaVermelho 1s ease-in-out;
+}
+
+@keyframes piscaVerde {
+  0% { background-color: rgba(40, 167, 69, 0); }
+  50% { background-color: rgba(40, 167, 69, 0.5); }
+  100% { background-color: rgba(40, 167, 69, 0); }
+}
+
+@keyframes piscaVermelho {
+  0% { background-color: rgba(220, 53, 69, 0); }
+  50% { background-color: rgba(220, 53, 69, 0.5); }
+  100% { background-color: rgba(220, 53, 69, 0); }
+}
+
+.feedback-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.feedback-content h2 {
+  margin-bottom: 20px;
+}
+
+.feedback-content button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}

@@ -1,0 +1,40 @@
+.alfabeto-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #20232a;
+}
+
+.quadrados-container, .letras-container {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.quadrado {
+  width: 60px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 30px;
+  background-color: #282c34;
+  color: #61dafb;
+  border: 2px solid #61dafb;
+  border-radius: 5px;
+}
+
+.letra {
+  width: 60px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 30px;
+  background-color: #61dafb;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}

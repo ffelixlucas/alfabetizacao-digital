@@ -1,0 +1,64 @@
+.map-container {
+  position: relative;
+  width: 942px; /* Tamanho fixo */
+  height: 570px; /* Tamanho fixo */
+  margin: 0 auto;
+  background-size: cover;
+  background-position: center;
+}
+
+.trail-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.trail-step {
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background-color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s;
+  border: 1px solid red; /* Borda temporária */
+}
+
+.trail-step:hover {
+  transform: scale(1.1);
+}
+
+.trail-step.desbloqueada {
+  animation: piscarVerde 1.5s infinite;
+  background-color: #4CAF50; /* Verde */
+  border: 3px solid #4CAF50;
+  box-shadow: 0 0 15px rgba(76, 175, 80, 0.6);
+}
+
+@keyframes piscarVerde {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.trail-step.bloqueada {
+  animation: piscarVermelho 1.5s infinite;
+  background-color: #f44336; /* Vermelho */
+  border: 3px solid #f44336;
+  box-shadow: 0 0 15px rgba(244, 67, 54, 0.6);
+}
+
+@keyframes piscarVermelho {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}

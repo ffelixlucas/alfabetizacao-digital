@@ -1,0 +1,64 @@
+.desafio-container {
+    text-align: center;
+    margin: 20px;
+    padding: 30px;
+    background-color: #f0f8ff;
+    border-radius: 15px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  .Img-Casa{
+    width: 500px;
+  }
+  
+  .opcoes-palavras {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 30px;
+  }
+  
+  .opcao-palavra {
+    padding: 15px 30px;
+    font-size: 20px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s ease;
+  }
+  
+  .opcao-palavra:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+  }
+  
+  .opcao-palavra.correta {
+    background-color: #28a745;
+  }
+  
+  .opcao-palavra.incorreta {
+    background-color: #dc3545;
+  }
+  
+  button:disabled {
+    cursor: not-allowed;
+    opacity: 0.7;
+  }
+  
+  .btn-proximo {
+    margin-top: 30px;
+    padding: 15px 30px;
+    background-color: #28a745;
+    color: white;
+    font-size: 18px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .btn-proximo:hover {
+    background-color: #218838;
+  }
+  
