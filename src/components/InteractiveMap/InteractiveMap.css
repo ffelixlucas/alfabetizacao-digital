@@ -1,10 +1,19 @@
+.map-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
 .map-container {
   position: relative;
-  width: 942px; /* Tamanho fixo */
-  height: 570px; /* Tamanho fixo */
-  margin: 0 auto;
+  width: 100%;
+  aspect-ratio: 16/9; /* Mantém a proporção da imagem */
+  background-image: url('../../assets/trilha.webp');
   background-size: cover;
   background-position: center;
+  background-repeat: no-repeat;
+  border: 1px solid #ddd;
 }
 
 .trail-container {
@@ -24,11 +33,16 @@
   align-items: center;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
   transition: transform 0.3s;
-  border: 1px solid red; /* Borda temporária */
 }
 
 .trail-step:hover {
   transform: scale(1.1);
+}
+
+.trail-step.concluida {
+  background-color: #4CAF50; /* Verde */
+  border: 3px solid #4CAF50;
+  box-shadow: 0 0 15px rgba(76, 175, 80, 0.6);
 }
 
 .trail-step.desbloqueada {
@@ -38,27 +52,31 @@
   box-shadow: 0 0 15px rgba(76, 175, 80, 0.6);
 }
 
-@keyframes piscarVerde {
-  0%, 100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.5;
-  }
-}
-
 .trail-step.bloqueada {
-  animation: piscarVermelho 1.5s infinite;
   background-color: #f44336; /* Vermelho */
   border: 3px solid #f44336;
   box-shadow: 0 0 15px rgba(244, 67, 54, 0.6);
 }
-
-@keyframes piscarVermelho {
+@keyframes piscarAmarelo {
   0%, 100% {
     opacity: 1;
   }
   50% {
     opacity: 0.5;
+  }
+}
+
+
+@media (max-width: 768px) {
+  .trail-step {
+    width: 60px;
+    height: 60px;
+  }
+}
+
+@media (max-width: 480px) {
+  .trail-step {
+    width: 50px;
+    height: 50px;
   }
 }

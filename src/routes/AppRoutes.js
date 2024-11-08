@@ -11,7 +11,9 @@ const AppRoutes = () => {
   const [missoesDesbloqueadas, setMissoesDesbloqueadas] = useState([1]);
 
   const handleCompletion = (faseCompleta) => {
+    console.log(`Fase ${faseCompleta} completada.`);
     if (!missoesDesbloqueadas.includes(faseCompleta + 1)) {
+      console.log(`Desbloqueando a fase ${faseCompleta + 1}`);
       const novasMissoes = [...missoesDesbloqueadas, faseCompleta + 1];
       setMissoesDesbloqueadas(novasMissoes);
     }

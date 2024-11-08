@@ -4,7 +4,7 @@
   align-items: center;
   justify-content: center;
   height: 100vh;
-  background-color: #20232a;
+
 }
 
 .quadrados-container, .letras-container {
@@ -20,7 +20,7 @@
   justify-content: center;
   align-items: center;
   font-size: 30px;
-  background-color: #282c34;
+  
   color: #61dafb;
   border: 2px solid #61dafb;
   border-radius: 5px;

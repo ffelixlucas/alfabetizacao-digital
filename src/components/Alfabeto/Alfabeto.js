@@ -26,6 +26,7 @@ function Alfabeto({ onCompletion }) {
     }
   };
 
+  // Adicione a função verificarOrdem aqui
   const verificarOrdem = () => {
     if (JSON.stringify(posicoes) === JSON.stringify(['A', 'B', 'C', 'D'])) {
       setFeedbackTipo('acerto');
@@ -33,6 +34,15 @@ function Alfabeto({ onCompletion }) {
     } else {
       setFeedbackTipo('erro');
     }
+  };
+
+  // Adicione o suporte para dispositivos touch aqui, se necessário
+  const handleTouchStart = (index) => {
+    setArrastando(index);
+  };
+
+  const handleTouchEnd = (index) => {
+    handleDrop(index);
   };
 
   return (
@@ -45,8 +55,9 @@ function Alfabeto({ onCompletion }) {
             className="quadrado"
             onDragOver={(e) => e.preventDefault()}
             onDrop={() => handleDrop(index)}
+            onTouchEnd={() => handleTouchEnd(index)} // Suporte para touch
           >
-            {letra ? letra : '🟦'}
+            {letra ? letra : ''}
           </div>
         ))}
       </div>
@@ -59,6 +70,7 @@ function Alfabeto({ onCompletion }) {
               className="letra"
               draggable
               onDragStart={() => handleDragStart(index)}
+              onTouchStart={() => handleTouchStart(index)} // Suporte para touch
             >
               {letra}
             </div>

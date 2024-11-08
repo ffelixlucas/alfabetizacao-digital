@@ -17,6 +17,7 @@ const FeedbackModal = ({ tipo, onClose }) => {
     }
 
     if (audio) {
+      audio.volume = 0.4; // Define o volume para 40% (reduzido em 60%)
       audio.play().catch(err => console.error(`Erro ao reproduzir áudio: ${err}`));
     }
   }, [tipo]);
