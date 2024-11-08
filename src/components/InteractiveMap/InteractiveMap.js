@@ -14,11 +14,17 @@ function InteractiveMap({ missoesDesbloqueadas }) {
   return (
     <div className="map-container" style={{ backgroundImage: `url(${trilhaImage})` }}>
       {fases.map((fase) => {
-        // Lógica para definir a classe CSS
+        // Definindo a classe CSS
         let classe = 'bloqueada';
-        if (missoesDesbloqueadas.includes(fase.id)) {
+
+        if (fase.id === 1) {
+          // A fase 1 começa sempre desbloqueada
+          classe = 'desbloqueada';
+        } else if (missoesDesbloqueadas.includes(fase.id)) {
+          // Fases que já foram concluídas
           classe = 'concluida';
-        } else if (fase.id === 1 || missoesDesbloqueadas.includes(fase.id - 1)) {
+        } else if (missoesDesbloqueadas.includes(fase.id - 1)) {
+          // Fases que são desbloqueadas pela conclusão da anterior
           classe = 'desbloqueada';
         }
 
