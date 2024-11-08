@@ -6,19 +6,14 @@ import CompletarFrase from '../components/CompletarFrase/CompletarFrase';
 import ExercicioInterativo from '../components/ExercicioInterativo/ExercicioInterativo';
 import AvaliacaoLeitura from '../components/AvaliacaoLeitura/AvaliacaoLeitura';
 import EncontrePalavra from '../components/EncontrePalavra/EncontrePalavra';
-
 const AppRoutes = () => {
   const [missoesDesbloqueadas, setMissoesDesbloqueadas] = useState([1]);
-
   const handleCompletion = (faseCompleta) => {
-    console.log(`Fase ${faseCompleta} completada.`);
     if (!missoesDesbloqueadas.includes(faseCompleta + 1)) {
-      console.log(`Desbloqueando a fase ${faseCompleta + 1}`);
       const novasMissoes = [...missoesDesbloqueadas, faseCompleta + 1];
       setMissoesDesbloqueadas(novasMissoes);
     }
   };
-
   return (
     <Router>
       <Routes>
@@ -57,5 +52,4 @@ const AppRoutes = () => {
     </Router>
   );
 };
-
 export default AppRoutes;
