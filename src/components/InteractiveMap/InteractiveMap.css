@@ -7,50 +7,88 @@ body {
   width: 100vw; /* Garante que o conteúdo preencha a largura */
  
 }
+/* Caixa de mensagem de boas-vindas */
 .welcome-message {
-  position: absolute;
+  position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  text-align: center;
-  background: #fff;
-  color: #FF6F61; /* Cor principal do projeto */
+  width: 90%; /* Ocupa a maior parte da largura */
+  max-width: 400px; /* Limita o tamanho em telas maiores */
+  background: rgba(255, 255, 255, 0.95); /* Fundo levemente transparente */
   padding: 20px;
-  border: 2px solid #FF6F61;
-  border-radius: 8px;
-  font-family: 'Press Start 2P', cursive;
-  box-shadow: 0 0 15px rgba(255, 111, 97, 0.8);
-  animation: fadeInOut 30s forwards;
-  z-index: 10;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+  animation: scaleUp 0.3s ease-in-out;
+  text-align: center;
+  font-family: 'Arial', sans-serif;
 }
 
+/* Título */
 .welcome-message h1 {
-  font-size: 1.5rem;
-  margin: 0;
-  text-shadow: 2px 2px 0 #FFF; /* Sombra para contraste */
+  font-size: 1.8rem;
+  margin-bottom: 15px;
+  color: #ff6f61;
 }
 
+/* Texto */
 .welcome-message p {
-  font-size: 1rem;
-  margin-top: 10px;
-  text-shadow: 2px 2px 0 #fff;
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+  color: #333;
 }
 
-/* Animação suave para a mensagem */
-@keyframes fadeInOut {
-  0%, 5% {
+/* Botão de confirmação */
+.welcome-message .ok-button {
+  padding: 10px 20px;
+  font-size: 1rem;
+  color: white;
+  background-color: #ff6f61;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.welcome-message .ok-button:hover {
+  background-color: #ff856d;
+  transform: scale(1.05);
+}
+
+/* Animação de entrada */
+@keyframes scaleUp {
+  from {
+    transform: translate(-50%, -50%) scale(0.8);
     opacity: 0;
-    transform: translate(-50%, -60%);
   }
-  20%, 80% {
+  to {
+    transform: translate(-50%, -50%) scale(1);
     opacity: 1;
-    transform: translate(-50%, -50%);
-  }
-  90%, 100% {
-    opacity: 0;
-    transform: translate(-50%, -40%);
   }
 }
+
+/* Ajuste responsivo para telas menores */
+@media (max-width: 425px) {
+  .welcome-message {
+    width: 95%; /* Expande para quase toda a tela */
+    padding: 15px;
+  }
+
+  .welcome-message h1 {
+    font-size: 1.6rem; /* Reduz tamanho do título */
+  }
+
+  .welcome-message p {
+    font-size: 1rem; /* Texto menor */
+  }
+
+  .welcome-message .ok-button {
+    padding: 10px 15px; /* Botão mais compacto */
+    font-size: 0.9rem;
+  }
+}
+
 
 .ok-button {
   margin-top: 10px;
