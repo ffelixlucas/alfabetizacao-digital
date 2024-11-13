@@ -1,12 +1,9 @@
-// src/components/mod5/FaseFinal.js
-
 import React, { useState, useEffect } from 'react';
 import './FaseFinal.css';
-import successSound from '../../../assets/sounds/sucess.mp3'
+import successSound from '../../../assets/sounds/sucess.mp3';
 import starImage from '../../../assets/star.png'; // Exemplo de ícone de estrela
 import { useNavigate } from 'react-router-dom';
 import FeedbackModal from '../../FeedbackModal/FeedbackModal';
-
 
 const FaseFinal = () => {
   const navigate = useNavigate();
@@ -25,8 +22,26 @@ const FaseFinal = () => {
       novaResposta[posicao] = letraSelecionada;
 
       setResposta(novaResposta);
+
       const novasLetras = [...letrasDisponiveis];
       novasLetras[index] = null; // Remove a letra selecionada
+      setLetrasDisponiveis(novasLetras);
+    }
+  };
+
+  const handleLetraTroca = (index) => {
+    const letraErrada = resposta[index];
+    if (letraErrada && palavraFinal[index] !== letraErrada) {
+      const novaResposta = [...resposta];
+      novaResposta[index] = ''; // Remove a letra errada
+
+      const novasLetras = [...letrasDisponiveis];
+      const posicaoLivre = novasLetras.indexOf(null);
+      if (posicaoLivre !== -1) {
+        novasLetras[posicaoLivre] = letraErrada; // Adiciona a letra errada de volta às disponíveis
+      }
+
+      setResposta(novaResposta);
       setLetrasDisponiveis(novasLetras);
     }
   };
@@ -62,7 +77,13 @@ const FaseFinal = () => {
       <h2>Forme a Palavra para Concluir a Fase!</h2>
       <div className="espaco-palavra">
         {resposta.map((letra, index) => (
-          <span key={index} className="letra-preenchida">{letra}</span>
+          <span
+            key={index}
+            className={`letra-preenchida ${palavraFinal[index] !== letra && letra ? 'letra-errada' : ''}`}
+            onClick={() => handleLetraTroca(index)} // Permite trocar letras erradas
+          >
+            {letra}
+          </span>
         ))}
       </div>
 

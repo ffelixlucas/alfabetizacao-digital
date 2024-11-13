@@ -80,3 +80,20 @@
     background-color: #ffeb3b; /* Amarelo para destacar */
   }
 }
+
+@media (max-width: 425px) {
+  .grade {
+    grid-template-columns: repeat(8, 35px); /* Reduz ainda mais para dispositivos pequenos */
+    gap: 2px;
+  }
+
+  .letra-botao {
+    width: 30px;
+    height: 30px;
+    font-size: 14px; /* Fonte ainda menor */
+  }
+
+  .lista-palavras li {
+    font-size: 14px; /* Reduz tamanho da fonte */
+  }
+}

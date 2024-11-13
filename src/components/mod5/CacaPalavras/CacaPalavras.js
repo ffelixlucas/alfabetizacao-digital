@@ -1,5 +1,3 @@
-// src/components/mod5/CacaPalavras.js
-
 import React, { useState, useEffect } from 'react';
 import './CacaPalavras.css';
 import FeedbackModal from '../../FeedbackModal/FeedbackModal';
@@ -8,7 +6,7 @@ const CacaPalavras = ({ onCompletion }) => {
   const palavrasCorretas = ["CASA", "ARVORE", "CAVALO", "ELEFANTE"];
   const [selecionadas, setSelecionadas] = useState([]);
   const [palavrasEncontradas, setPalavrasEncontradas] = useState([]);
-  const [letrasEncontradas, setLetrasEncontradas] = useState([]); // Adiciona um estado para as letras encontradas
+  const [letrasEncontradas, setLetrasEncontradas] = useState([]);
   const [arrastando, setArrastando] = useState(false);
   const [feedbackTipo, setFeedbackTipo] = useState(null);
   const [tempo, setTempo] = useState(0);
@@ -30,8 +28,10 @@ const CacaPalavras = ({ onCompletion }) => {
     setSelecionadas([{ letra, i, j }]);
   };
 
-  const handleMouseOver = (letra, i, j) => {
-    if (arrastando && !selecionadas.find(sel => sel.i === i && sel.j === j)) {
+  const handleMouseMove = (i, j) => {
+    if (!arrastando) return;
+    if (!selecionadas.find(sel => sel.i === i && sel.j === j)) {
+      const letra = letras[i][j];
       setSelecionadas([...selecionadas, { letra, i, j }]);
     }
   };
@@ -41,18 +41,43 @@ const CacaPalavras = ({ onCompletion }) => {
     verificarResposta();
   };
 
+  const handleTouchStart = (letra, i, j) => {
+    setArrastando(true);
+    setSelecionadas([{ letra, i, j }]);
+  };
+
+  const handleTouchMove = (event) => {
+    if (!arrastando) return;
+
+    const touch = event.touches[0];
+    const target = document.elementFromPoint(touch.clientX, touch.clientY);
+
+    if (target && target.dataset && target.dataset.i && target.dataset.j) {
+      const i = parseInt(target.dataset.i);
+      const j = parseInt(target.dataset.j);
+
+      if (!selecionadas.find(sel => sel.i === i && sel.j === j)) {
+        const letra = letras[i][j];
+        setSelecionadas([...selecionadas, { letra, i, j }]);
+      }
+    }
+  };
+
+  const handleTouchEnd = () => {
+    setArrastando(false);
+    verificarResposta();
+  };
+
   const verificarResposta = () => {
     const palavraFormada = selecionadas.map(item => item.letra).join('');
     if (palavrasCorretas.includes(palavraFormada) && !palavrasEncontradas.includes(palavraFormada)) {
       setPalavrasEncontradas([...palavrasEncontradas, palavraFormada]);
       setFeedbackTipo('acerto');
-
-      // Adiciona as coordenadas das letras encontradas ao estado
       setLetrasEncontradas([...letrasEncontradas, ...selecionadas]);
     } else {
       setFeedbackTipo('erro');
     }
-    setSelecionadas([]); // Limpa a seleção após verificar
+    setSelecionadas([]);
   };
 
   useEffect(() => {
@@ -91,7 +116,12 @@ const CacaPalavras = ({ onCompletion }) => {
           </li>
         ))}
       </ul>
-      <div className="grade" onMouseUp={handleMouseUp}>
+      <div
+        className="grade"
+        onTouchMove={handleTouchMove}
+        onTouchEnd={handleTouchEnd}
+        onMouseUp={handleMouseUp} // Para desktop
+      >
         {letras.map((linha, i) => (
           <div key={i} className="linha">
             {linha.map((letra, j) => {
@@ -100,9 +130,12 @@ const CacaPalavras = ({ onCompletion }) => {
                 <div
                   key={j}
                   id={`letra-${i}-${j}`}
+                  data-i={i}
+                  data-j={j}
                   className={`letra-botao ${isEncontrada ? 'palavra-correta' : ''} ${selecionadas.find(sel => sel.i === i && sel.j === j) ? 'selecionado' : ''}`}
-                  onMouseDown={() => handleMouseDown(letra, i, j)}
-                  onMouseOver={() => handleMouseOver(letra, i, j)}
+                  onMouseDown={() => handleMouseDown(letra, i, j)} // Para desktop
+                  onMouseMove={() => handleMouseMove(i, j)} // Para desktop
+                  onTouchStart={() => handleTouchStart(letra, i, j)} // Para mobile
                 >
                   {letra}
                 </div>

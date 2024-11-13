@@ -1,44 +1,69 @@
-/* src/components/mod15/FaseFinal.css */
-
 .fase-final-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
+  padding: 10px;
 }
 
 h2 {
-  font-size: 2rem;
-  margin-bottom: 20px;
+  font-size: 1.5rem; /* Tamanho do título */
+  margin-bottom: 15px;
 }
 
 .espaco-palavra {
   display: flex;
-  gap: 10px;
+  gap: 5px; /* Espaço entre letras */
   margin-bottom: 20px;
-  font-size: 2rem;
+  font-size: 1.5rem;
   color: #000;
+  justify-content: center;
+  align-items: center;
+  white-space: nowrap; /* Garante que a palavra não quebre */
+  overflow-x: hidden; /* Remove rolagem horizontal */
+}
+
+.espaco-palavra .letra-preenchida {
+  cursor: pointer;
+  color: #000;
+  font-weight: bold;
+  padding: 5px; /* Ajuste interno */
+  border: 2px solid #61dafb;
+  background-color: #e3f2fd;
+  border-radius: 5px;
+  width: 30px; /* Quadradinhos menores */
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1rem;
+}
+
+.espaco-palavra .letra-preenchida.letra-errada {
+  color: #f00;
+  border-color: #f00; /* Borda vermelha para letras erradas */
 }
 
 .letras-disponiveis {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 10px; /* Espaço maior entre os quadrados inferiores */
   justify-content: center;
   margin-bottom: 20px;
 }
 
 .letra-bloco {
-  width: 60px;
-  height: 60px;
-  font-size: 2rem;
+  width: 50px; /* Aumenta os botões inferiores para facilitar o clique */
+  height: 50px;
+  font-size: 1.2rem; /* Fonte proporcional aos botões maiores */
   background-color: #f0f0f0;
   color: #333;
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  border-radius: 8px;
+  border-radius: 5px;
+  border: 2px solid #61dafb;
   transition: background-color 0.3s;
 }
 
@@ -46,50 +71,46 @@ h2 {
   background-color: #d0e0f0;
 }
 
-.letra-preenchida {
-  color: #000; /* Preto para melhor legibilidade */
-  font-weight: bold;
-}
-
+/* Mensagem de sucesso */
 .mensagem-final {
-  margin-top: 30px;
+  margin-top: 20px;
   background-color: #fffbe5;
-  padding: 20px;
+  padding: 15px;
   border: 2px solid #ffd700;
   border-radius: 12px;
-  box-shadow: 0 0 15px rgba(255, 215, 0, 0.6);
+  box-shadow: 0 0 10px rgba(255, 215, 0, 0.6);
   text-align: center;
   animation: fadeIn 1s ease-in;
 }
 
 .mensagem-final h3 {
-  font-size: 2.5rem;
+  font-size: 1.5rem;
   color: #333;
   margin: 0;
 }
 
 .mensagem-final p {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   color: #555;
   margin-top: 10px;
 }
 
 .estrelas {
   display: flex;
-  gap: 10px;
+  gap: 5px;
   justify-content: center;
   margin-top: 15px;
 }
 
 .estrela {
-  width: 80px;
+  width: 40px;
   height: auto;
 }
 
 .btn-finalizar {
   margin-top: 20px;
-  padding: 10px 20px;
-  font-size: 1.2rem;
+  padding: 8px 16px;
+  font-size: 1rem;
   background-color: #4CAF50;
   color: white;
   border: none;
@@ -101,7 +122,74 @@ h2 {
   background-color: #45a049;
 }
 
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+/* Media Queries */
+
+/* Para dispositivos abaixo de 768px */
+@media (max-width: 768px) {
+  h2 {
+    font-size: 1.4rem;
+  }
+
+  .espaco-palavra {
+    gap: 4px;
+    font-size: 1.2rem;
+  }
+
+  .letra-bloco {
+    width: 60px; /* Botões maiores no mobile */
+    height: 60px;
+    font-size: 1.5rem;
+  }
+
+  .espaco-palavra .letra-preenchida {
+    width: 25px;
+    height: 25px;
+    font-size: 1rem;
+  }
+}
+
+/* Para dispositivos abaixo de 425px */
+@media (max-width: 425px) {
+  .fase-final-container {
+    padding: 5px;
+  }
+
+  h2 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+  }
+
+  .espaco-palavra {
+    gap: 3px;
+    font-size: 1rem;
+  }
+
+  .letra-bloco {
+    width: 70px; /* Aumenta os botões ainda mais no celular */
+    height: 70px;
+    font-size: 1.5rem;
+  }
+
+  .espaco-palavra .letra-preenchida {
+    width: 20px; /* Mantém os quadradinhos superiores pequenos */
+    height: 20px;
+    font-size: 0.9rem;
+  }
+
+  .btn-finalizar {
+    font-size: 0.9rem;
+    padding: 6px 12px;
+  }
+
+  .mensagem-final {
+    padding: 10px;
+  }
+
+  .estrelas {
+    gap: 5px;
+  }
+
+  .estrela {
+    width: 30px;
+  }
 }

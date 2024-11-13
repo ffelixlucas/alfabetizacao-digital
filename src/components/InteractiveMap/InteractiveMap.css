@@ -5,7 +5,7 @@ body {
   overflow: hidden; /* Desabilita a rolagem */
   height: 100vh; /* Garante que o conteúdo preencha a altura */
   width: 100vw; /* Garante que o conteúdo preencha a largura */
-  background-color: #CDB99B;
+ 
 }
 .welcome-message {
   position: absolute;
@@ -77,6 +77,7 @@ body {
   width: 100vw;
   height: 100vh;
   box-sizing: border-box;
+  background-color: #CDB99B;
 }
 
 .map-container {
@@ -105,6 +106,7 @@ body {
   height: 28px;
   border-radius: 50%;
   background-color: #ffffff;
+  color: #FFF;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -222,6 +224,8 @@ body {
   }
 
   .trail-step {
+    font-size: 7px;
+    
     width: 5px; /* Ajusta o tamanho dos pontos */
     height: 5px;
   }

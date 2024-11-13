@@ -12,7 +12,7 @@
   margin-bottom: 20px; /* Espaço abaixo da imagem */
   border-radius: 8px; /* Bordas arredondadas para um visual agradável */
 }
-
+    
 .quadrados-container {
   display: flex;
   gap: 10px;
@@ -56,4 +56,24 @@
 
 .verificar-btn:hover {
   background-color: #218838;
+}
+
+/* Media Queries */
+@media (max-width: 425px) {
+  .imagem-elefante {
+    max-width: 50%; /* Aumenta o tamanho relativo da imagem para telas menores */
+    margin-bottom: 15px; /* Reduz o espaço abaixo */
+  }
+
+  .quadrados-container, .letras-container {
+    flex-wrap: wrap; /* Permite quebrar linhas em telas menores */
+    gap:2px;
+    justify-content: center; /* Centraliza os itens no mobile */
+  }
+
+  .quadrado, .letra {
+    width: 30px; /* Reduz o tamanho dos quadrados no mobile */
+    height: 30px;
+    font-size: 16px; /* Ajusta o tamanho da fonte */
+  }
 }

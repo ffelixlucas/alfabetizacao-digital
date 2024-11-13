@@ -7,11 +7,19 @@
 }
 
 .imagem-cavalo {
-  max-width:15%; /* Ajusta a imagem ao tamanho do contêiner */
+  max-width:25%; /* Ajusta a imagem ao tamanho do contêiner */
   height: auto; /* Mantém a proporção da imagem */
   margin-bottom: 20px; /* Espaço abaixo da imagem */
   border-radius: 8px; /* Bordas arredondadas para um visual agradável */
 }
+
+      @media (max-width: 425px) {
+        .imagem-cavalo {
+          max-width: 60%; /* Ajusta a largura máxima para telas pequenas */
+          height: auto; /* Mantém a proporção da imagem */
+        }
+      }
+
 
 .quadrados-container {
   display: flex;

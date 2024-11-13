@@ -12,6 +12,12 @@
   margin-bottom: 20px; /* Espaço abaixo da imagem */
   border-radius: 8px; /* Bordas arredondadas para um visual agradável */
 }
+@media (max-width: 425px) {
+  .imagem-casa {
+    max-width: 50%; /* Aumenta o tamanho relativo da imagem para telas menores */
+    margin-bottom: 15px; /* Reduz o espaço abaixo */
+  }
+}
 
 .espaco-palavra {
   display: flex;

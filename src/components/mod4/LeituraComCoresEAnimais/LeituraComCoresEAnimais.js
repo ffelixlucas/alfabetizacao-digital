@@ -1,8 +1,6 @@
-// src/components/mod4/LeituraComCoresEAnimais.js
-
 import React, { useState, useRef } from 'react';
 import './AvaliacaoLeitura.css';
-import { FaMicrophone, FaStop } from 'react-icons/fa';
+import { FaMicrophone } from 'react-icons/fa';
 import FeedbackModal from '../../FeedbackModal/FeedbackModal';
 
 const LeituraComCoresEAnimais = ({ onCompletion }) => {
@@ -11,15 +9,21 @@ const LeituraComCoresEAnimais = ({ onCompletion }) => {
   const [gravando, setGravando] = useState(false);
   const [frase] = useState('O gato preto dorme em cima do tapete vermelho');
   const recognitionRef = useRef(null);
-  const timeoutRef = useRef(null);
 
   const iniciarReconhecimento = () => {
     const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-    const recognition = new SpeechRecognition();
 
+    if (!SpeechRecognition) {
+      alert('Seu navegador não suporta reconhecimento de fala. Use o botão "Concluir sem microfone" para continuar.');
+      return;
+    }
+
+    const recognition = new SpeechRecognition();
     recognitionRef.current = recognition;
-    recognition.continuous = true;
+
+    recognition.continuous = false; // Para automaticamente após a fala
     recognition.interimResults = false;
+    recognition.lang = 'pt-BR';
 
     recognition.onstart = () => {
       setResultado('');
@@ -30,14 +34,7 @@ const LeituraComCoresEAnimais = ({ onCompletion }) => {
     recognition.onresult = (event) => {
       const texto = event.results[0][0].transcript.toLowerCase().trim();
       setResultado(texto);
-
-      clearTimeout(timeoutRef.current);
-      timeoutRef.current = setTimeout(() => {
-        if (texto.length >= frase.length * 0.8) {
-          avaliarLeitura(texto);
-          pararReconhecimento();
-        }
-      }, 2500);
+      setGravando(false);
     };
 
     recognition.onerror = () => {
@@ -52,24 +49,21 @@ const LeituraComCoresEAnimais = ({ onCompletion }) => {
     recognition.start();
   };
 
-  const pararReconhecimento = () => {
-    if (recognitionRef.current) {
-      recognitionRef.current.stop();
-      recognitionRef.current = null;
-      setGravando(false);
-    }
-    clearTimeout(timeoutRef.current);
-  };
+  const verificarLeitura = () => {
+    const textoLimpo = resultado.toLowerCase().replace(/[\s.,!?]/g, '');
+    const fraseLimpa = frase.toLowerCase().replace(/[\s.,!?]/g, '');
 
-  const avaliarLeitura = (texto) => {
-    if (texto === frase.toLowerCase()) {
+    if (textoLimpo === fraseLimpa) {
       setFeedbackTipo('acerto');
-      if (onCompletion) {
-        onCompletion();
-      }
+      if (onCompletion) onCompletion();
     } else {
       setFeedbackTipo('erro');
     }
+  };
+
+  const concluirSemMicrofone = () => {
+    setFeedbackTipo('acerto'); // Marca como correto
+    if (onCompletion) onCompletion(); // Avança para o próximo desafio
   };
 
   return (
@@ -80,8 +74,11 @@ const LeituraComCoresEAnimais = ({ onCompletion }) => {
         <button onClick={iniciarReconhecimento} disabled={gravando}>
           <FaMicrophone size={30} /> Falar
         </button>
-        <button onClick={pararReconhecimento} disabled={!gravando} style={{ backgroundColor: 'red', color: 'white' }}>
-          <FaStop size={30} /> Parar
+        <button onClick={verificarLeitura} disabled={!resultado}>
+          Verificar
+        </button>
+        <button onClick={concluirSemMicrofone}>
+          Concluir sem Microfone
         </button>
       </div>
       {resultado && (

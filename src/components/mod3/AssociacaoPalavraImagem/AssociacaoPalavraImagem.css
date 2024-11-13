@@ -38,4 +38,9 @@
   .opcao-palavra:active {
     background-color: #1a91e0;
   }
-  
+  @media (max-width: 425px) {
+    .imagem-associacao {
+      max-width: 30%; /* Aumenta o tamanho relativo da imagem para telas menores */
+      margin-bottom: 15px; /* Reduz o espaço abaixo */
+    }
+  }
