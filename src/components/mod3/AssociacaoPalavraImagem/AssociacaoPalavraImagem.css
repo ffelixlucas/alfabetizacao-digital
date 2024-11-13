@@ -1,0 +1,41 @@
+.associacao-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+  
+  .imagem-associacao {
+    max-width: 5%;
+    height: auto;
+    margin-bottom: 20px;
+    border-radius: 8px;
+  }
+  
+  .opcoes-palavras {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .opcao-palavra {
+    padding: 10px 20px;
+    font-size: 18px;
+    background-color: #61dafb;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .opcao-palavra:hover {
+    background-color: #21a1f1;
+  }
+  
+  .opcao-palavra:active {
+    background-color: #1a91e0;
+  }
+  

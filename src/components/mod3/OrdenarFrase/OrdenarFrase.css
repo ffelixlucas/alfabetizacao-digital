@@ -1,0 +1,62 @@
+.ordenar-frase-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+  
+  .espaco-frase {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .palavra-preenchida {
+    padding: 10px 15px;
+    font-size: 18px;
+    background-color: #61dafb;
+    color: white;
+    border-radius: 5px;
+    margin: 5px;
+  }
+  
+  .palavras-disponiveis {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .palavra-bloco {
+    padding: 10px 15px;
+    font-size: 18px;
+    background-color: #f0f0f0;
+    border: 2px solid #61dafb;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .palavra-bloco.invisivel {
+    visibility: hidden;
+  }
+  
+  .btn-verificar {
+    padding: 10px 20px;
+    margin-top: 20px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #28a745;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .btn-verificar:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+  }
+  

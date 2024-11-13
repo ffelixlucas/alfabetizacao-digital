@@ -1,10 +1,13 @@
-import React, { useState } from 'react';
-import './Alfabeto.css';
-import FeedbackModal from '../FeedbackModal/FeedbackModal';
+// src/components/mod3/PalavraLonga.js
 
-function Alfabeto({ onCompletion }) {
-  const [letras, setLetras] = useState(['A', 'B', 'C', 'D']);
-  const [posicoes, setPosicoes] = useState([null, null, null, null]);
+import React, { useState } from 'react';
+import './PalavraLonga.css';
+import FeedbackModal from '../../FeedbackModal/FeedbackModal';
+import elefanteImg from '../../../assets/elefante.jpg';
+
+function PalavraLonga({ onCompletion }) {
+  const [letras, setLetras] = useState(['E', 'F', 'E', 'L', 'T', 'N', 'A', 'E']);
+  const [posicoes, setPosicoes] = useState([null, null, null, null, null, null, null, null]);
   const [arrastando, setArrastando] = useState(null);
   const [feedbackTipo, setFeedbackTipo] = useState(null);
 
@@ -19,35 +22,26 @@ function Alfabeto({ onCompletion }) {
       setPosicoes(novasPosicoes);
 
       const novasLetras = [...letras];
-      novasLetras[arrastando] = null; // Remove a letra que foi arrastada
+      novasLetras[arrastando] = null;
       setLetras(novasLetras);
 
       setArrastando(null);
     }
   };
 
-  // Adicione a função verificarOrdem aqui
   const verificarOrdem = () => {
-    if (JSON.stringify(posicoes) === JSON.stringify(['A', 'B', 'C', 'D'])) {
+    if (JSON.stringify(posicoes) === JSON.stringify(['E', 'L', 'E', 'F', 'A', 'N', 'T', 'E'])) {
       setFeedbackTipo('acerto');
-      onCompletion(); // Desbloqueia a próxima fase
+      onCompletion();
     } else {
       setFeedbackTipo('erro');
     }
   };
 
-  // Adicione o suporte para dispositivos touch aqui, se necessário
-  const handleTouchStart = (index) => {
-    setArrastando(index);
-  };
-
-  const handleTouchEnd = (index) => {
-    handleDrop(index);
-  };
-
   return (
-    <div className="alfabeto-container">
-      <h2>Organize as letras corretamente!</h2>
+    <div className="palavra-longa-container">
+      <h2>Organize as letras para formar a palavra correta!</h2>
+      <img src={elefanteImg} alt="Imagem de um elefante" className="imagem-elefante" />
       <div className="quadrados-container">
         {posicoes.map((letra, index) => (
           <div
@@ -55,7 +49,6 @@ function Alfabeto({ onCompletion }) {
             className="quadrado"
             onDragOver={(e) => e.preventDefault()}
             onDrop={() => handleDrop(index)}
-            onTouchEnd={() => handleTouchEnd(index)} // Suporte para touch
           >
             {letra ? letra : ''}
           </div>
@@ -70,7 +63,6 @@ function Alfabeto({ onCompletion }) {
               className="letra"
               draggable
               onDragStart={() => handleDragStart(index)}
-              onTouchStart={() => handleTouchStart(index)} // Suporte para touch
             >
               {letra}
             </div>
@@ -89,4 +81,4 @@ function Alfabeto({ onCompletion }) {
   );
 }
 
-export default Alfabeto;
+export default PalavraLonga;

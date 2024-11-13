@@ -1,11 +1,14 @@
+// src/components/mod2/CompletarFrase2.js
+
 import React, { useState } from 'react';
 import './CompletarFrase.css';
-import FeedbackModal from '../FeedbackModal/FeedbackModal';
+import FeedbackModal from '../../FeedbackModal/FeedbackModal';
+import gatoDormindo from '../../../assets/gatodormindo.jpg';
 
-const CompletarFrase = ({ onCompletion }) => {
-  const frase = "O sol é ___."; // Frase simples para completar
-  const respostaCorreta = "quente";
-  const opcoes = ["quente", "gelado", "verde", "molhado"];
+const CompletarFrase2 = ({ onCompletion }) => {
+  const fraseParte1 = "O gato está";
+  const respostaCorreta = "dormindo";
+  const opcoes = ["dormindo", "voando", "brilhando", "cantando"]; // Opções que deixam clara a resposta correta
 
   const [respostaSelecionada, setRespostaSelecionada] = useState(null);
   const [feedbackTipo, setFeedbackTipo] = useState(null);
@@ -16,14 +19,16 @@ const CompletarFrase = ({ onCompletion }) => {
       onCompletion();
     } else {
       setFeedbackTipo('erro');
+      setRespostaSelecionada(null); // Reseta a resposta selecionada se estiver errada
     }
   };
 
   return (
     <div className="completar-frase-container">
       <h2>Complete a frase:</h2>
+      <img src={gatoDormindo} alt="Gato dormindo" className="imagem-gato" />
       <p className="frase">
-        O sol é <span className="lacuna">___</span>.
+        {fraseParte1} <span className="lacuna">{respostaSelecionada || '_______'}</span>.
       </p>
 
       <div className="opcoes-palavras">
@@ -49,4 +54,4 @@ const CompletarFrase = ({ onCompletion }) => {
   );
 };
 
-export default CompletarFrase;
+export default CompletarFrase2;

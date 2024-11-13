@@ -1,0 +1,10 @@
+.imagem-gato {
+    max-width: 70%; /* Ajusta a imagem ao tamanho do contêiner */
+    height: auto; /* Mantém a proporção da imagem */
+    margin-bottom: 20px; /* Espaço abaixo da imagem */
+    border-radius: 8px; /* Bordas arredondadas para um visual agradável */
+  }
+  .completar-frase-container{
+    background: #FFF;
+    box-shadow: none;
+  }

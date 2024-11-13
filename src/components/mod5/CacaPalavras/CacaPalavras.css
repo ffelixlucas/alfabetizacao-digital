@@ -1,0 +1,82 @@
+/* src/components/mod5/CacaPalavras.css */
+
+.caca-palavras-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.lista-palavras {
+  list-style-type: none;
+  display: flex;
+  gap: 10px;
+  padding: 0;
+  margin-bottom: 20px;
+}
+
+.lista-palavras li {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+
+.letra-botao.piscar {
+  animation: blink 1s infinite;
+  background-color: #ffeb3b; /* Amarelo para destacar */
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.palavra-encontrada {
+  color: green;
+}
+
+.grade {
+  display: grid;
+  grid-template-columns: repeat(8, 50px);
+  gap: 5px;
+}
+
+.linha {
+  display: contents;
+}
+
+.letra-botao {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  border: 1px solid #ddd;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  user-select: none;
+  transition: background-color 0.3s;
+}
+
+/* Estilo quando a letra é selecionada */
+.letra-botao.selecionado {
+  background-color: #cce5ff;
+}
+
+.letra-botao.palavra-correta {
+  background-color: #4caf50; /* Verde */
+  color: white;
+  border-color: #4caf50; /* Borda verde para destacar */
+}
+
+/* Efeito de piscar para a palavra atual */
+.letra-botao.piscar {
+  animation: piscar 1s infinite;
+}
+
+@keyframes piscar {
+  50% {
+    background-color: #ffeb3b; /* Amarelo para destacar */
+  }
+}

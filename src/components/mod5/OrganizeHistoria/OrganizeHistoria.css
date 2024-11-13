@@ -1,0 +1,62 @@
+/* src/components/mod5/OrganizeHistoria.css */
+
+.organize-historia-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+h2 {
+  font-size: 2rem; /* Tamanho maior para facilitar a leitura */
+  margin-bottom: 20px;
+}
+
+.frases-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 100%;
+}
+
+.frase-botao {
+  padding: 15px;
+  background-color: #61dafb; /* Cor azul clara para o fundo do botão */
+  color: #fff; /* Texto em branco para contraste */
+  border: none;
+  border-radius: 8px;
+  font-size: 1.5rem; /* Tamanho da fonte aumentado */
+  cursor: pointer;
+  text-align: left;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.frase-botao:hover {
+  background-color: #21a1f1; /* Azul um pouco mais escuro ao passar o mouse */
+  transform: scale(1.02); /* Leve aumento ao passar o mouse */
+}
+
+.frase-botao.selecionada {
+  background-color: #cccccc; /* Cinza claro para indicar seleção */
+  color: #333; /* Texto em cor escura para contraste */
+  cursor: default;
+}
+
+.btn-verificar {
+  margin-top: 20px;
+  padding: 12px 24px;
+  background-color: #28a745; /* Verde para o botão de verificar */
+  color: white;
+  font-size: 1.5rem; /* Tamanho da fonte aumentado */
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.btn-verificar:hover {
+  background-color: #218838; /* Verde um pouco mais escuro ao passar o mouse */
+}

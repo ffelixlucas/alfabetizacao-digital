@@ -1,6 +1,9 @@
+// src/components/mod3/ExercicioInterativo.js
+
 import React, { useState } from 'react';
 import './ExercicioInterativo.css';
-import FeedbackModal from '../FeedbackModal/FeedbackModal';
+import FeedbackModal from '../../FeedbackModal/FeedbackModal';
+import casaImg from '../../../assets/casa.png';
 
 const ExercicioInterativo = ({ onCompletion }) => {
   const palavraCorreta = "casa"; // Palavra simples e didática
@@ -36,6 +39,7 @@ const ExercicioInterativo = ({ onCompletion }) => {
   return (
     <div className="exercicio-container">
       <h2>Monte a Palavra:</h2>
+      <img src={casaImg} alt="Imagem de uma casa" className="imagem-casa" />
       <div className="espaco-palavra">
         {resposta.map((letra, index) => (
           <span key={index} className="letra-preenchida">{letra}</span>

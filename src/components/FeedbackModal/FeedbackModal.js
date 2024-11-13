@@ -1,3 +1,5 @@
+// src/components/FeedbackModal/FeedbackModal.js
+
 import React, { useEffect } from 'react';
 import './FeedbackModal.css';
 import Confetti from 'react-confetti';
@@ -17,7 +19,7 @@ const FeedbackModal = ({ tipo, onClose }) => {
     }
 
     if (audio) {
-      audio.volume = 0.4; // Define o volume para 40% (reduzido em 60%)
+      audio.volume = 0.4; // Define o volume para 40%
       audio.play().catch(err => console.error(`Erro ao reproduzir áudio: ${err}`));
     }
   }, [tipo]);
@@ -26,7 +28,7 @@ const FeedbackModal = ({ tipo, onClose }) => {
     if (tipo === 'acerto') {
       navigate('/'); // Volta para o mapa
     } else {
-      onClose(); // Fecha o modal e permite tentar novamente
+      onClose(); // Refazer o exercício
     }
   };
 
@@ -36,7 +38,7 @@ const FeedbackModal = ({ tipo, onClose }) => {
       <div className="feedback-content">
         <h2>{tipo === 'acerto' ? 'Você acertou!' : 'Ops! Tente novamente.'}</h2>
         <button onClick={handleButtonClick}>
-          {tipo === 'acerto' ? 'Próximo Nível' : 'Tentar Novamente'}
+          {tipo === 'acerto' ? 'Próximo Nível' : 'Refazer'}
         </button>
       </div>
     </div>

@@ -1,13 +1,13 @@
 import React, { useState, useRef } from 'react';
 import './AvaliacaoLeitura.css';
 import { FaMicrophone, FaStop } from 'react-icons/fa';
-import FeedbackModal from '../FeedbackModal/FeedbackModal';
+import FeedbackModal from '../../FeedbackModal/FeedbackModal';
 
 const AvaliacaoLeitura = ({ onCompletion }) => {
   const [resultado, setResultado] = useState('');
   const [feedbackTipo, setFeedbackTipo] = useState(null);
   const [gravando, setGravando] = useState(false);
-  const [frase] = useState('Maria foi na padaria comprar 10 pães para sua mãe');
+  const [frase] = useState('Maria foi para a escola mais cedo');
   const recognitionRef = useRef(null);
   const timeoutRef = useRef(null);
 

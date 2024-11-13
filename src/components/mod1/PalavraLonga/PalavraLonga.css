@@ -1,0 +1,59 @@
+.palavra-longa-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.imagem-elefante {
+  max-width: 15%; /* Ajusta a imagem ao tamanho do contêiner */
+  height: auto; /* Mantém a proporção da imagem */
+  margin-bottom: 20px; /* Espaço abaixo da imagem */
+  border-radius: 8px; /* Bordas arredondadas para um visual agradável */
+}
+
+.quadrados-container {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.letras-container {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.quadrado, .letra {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+  background-color: #f0f0f0;
+  border: 2px solid #61dafb;
+  border-radius: 5px;
+}
+
+.letra {
+  background-color: #61dafb;
+  color: white;
+  cursor: pointer;
+}
+
+.verificar-btn {
+  padding: 10px 20px;
+  margin-top: 20px;
+  font-size: 16px;
+  color: #fff;
+  background-color: #28a745;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.verificar-btn:hover {
+  background-color: #218838;
+}
