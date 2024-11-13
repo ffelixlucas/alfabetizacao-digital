@@ -1,4 +1,12 @@
 /* Estiliza a mensagem de boas-vindas */
+body {
+  margin: 0; /* Remove margens padrão */
+  padding: 0;
+  overflow: hidden; /* Desabilita a rolagem */
+  height: 100vh; /* Garante que o conteúdo preencha a altura */
+  width: 100vw; /* Garante que o conteúdo preencha a largura */
+  background-color: #CDB99B;
+}
 .welcome-message {
   position: absolute;
   top: 50%;
@@ -73,16 +81,17 @@
 
 .map-container {
   position: relative;
-  width: 90%; /* Ajuste a largura que você deseja, como 80% da tela */
+  width: 90%;
   margin: 10px 60px;
   margin-bottom: 50px;
-  aspect-ratio: 16 / 9; /* Mantém a proporção */
-  background-image: url('../../assets/trilha2.webp'); /* Coloque o caminho correto */
-  background-size: contain; /* Mostra a imagem inteira */
+  aspect-ratio: 16 / 9;
+  background-image: url('../../assets/trilha2.webp');
+  background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-  
 }
+
+
 
 .trail-container {
   position: relative;
@@ -143,11 +152,82 @@
   border-color: #4CAF50;
 }
 
-@media (max-width: 768px) {
+
+/* Para telas maiores que 1024px */
+@media (min-width: 1024px) {
+  .map-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-56%, -50%) scale(1.0); /* Centraliza sem alterar escala */
+    width: 90%; /* Mantém o tamanho padrão */
+    height: auto;
+  }
+
   .trail-step {
-    font-size: 4px;
-    width: 8px;
-    height: 7px;
+    width: 28px;
+    height: 28px;
+  }
 }
+
+/* Para telas médias entre 768px e 1024px */
+@media (max-width: 1024px) and (min-width: 768px) {
+  .map-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-57%, -52%) scale(1.8); /* Ajusta o mapa */
+    width: 95%; /* Ajuste para preencher mais */
+    height: auto;
+  }
+
+  .trail-step {
+    width: 10px; /* Ajusta tamanho dos pontos */
+    height: 10px;
+  }
 }
+
+/* Para telas menores entre 425px e 768px */
+@media (max-width: 768px) and (min-width: 426px) {
+  .map-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-59%, -72%) scale(1.9); /* Centraliza e ajusta escala */
+    width: 100%;
+    height: auto;
+  }
+
+  .trail-step {
+    width: 5px; /* Ajusta tamanho dos pontos */
+    height: 5px;
+  }
+}
+
+@media (max-width: 425px) {
+  .map-wrapper {
+    position: relative; /* Define o contexto para posicionamento do mapa */
+    width: 100%;
+    height: 100vh; /* Garante que ocupa toda a altura */
+    overflow: hidden; /* Impede rolagem */
+  }
+
+  .map-container {
+    position: absolute; /* Permite mover manualmente */
+    top: 50%; /* Move o centro para o meio vertical */
+    left: 50%; /* Move o centro para o meio horizontal */
+    transform: translate(-65%, -149%) scale(1.9); /* Centraliza e escala */
+    width: 100%; /* Ocupa toda a largura */
+    height: auto; /* Ajusta a altura conforme necessário */
+  }
+
+  .trail-step {
+    width: 5px; /* Ajusta o tamanho dos pontos */
+    height: 5px;
+  }
+}
+
+
+
+
 
