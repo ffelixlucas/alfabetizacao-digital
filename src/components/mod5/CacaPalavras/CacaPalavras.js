@@ -2,8 +2,9 @@ import React, { useState, useEffect } from 'react';
 import './CacaPalavras.css';
 import FeedbackModal from '../../FeedbackModal/FeedbackModal';
 
+const palavrasCorretas = ["CASA", "ARVORE", "CAVALO", "ELEFANTE"];
+
 const CacaPalavras = ({ onCompletion }) => {
-  const palavrasCorretas = ["CASA", "ARVORE", "CAVALO", "ELEFANTE"];
   const [selecionadas, setSelecionadas] = useState([]);
   const [palavrasEncontradas, setPalavrasEncontradas] = useState([]);
   const [letrasEncontradas, setLetrasEncontradas] = useState([]);
@@ -95,7 +96,7 @@ const CacaPalavras = ({ onCompletion }) => {
       setIndicePiscar(proximaPalavra);
     }
     return () => clearInterval(timer);
-  }, [tempo, palavrasEncontradas.length, palavrasCorretas]);
+  }, [tempo, palavrasEncontradas.length]);
 
   return (
     <div className="caca-palavras-container">

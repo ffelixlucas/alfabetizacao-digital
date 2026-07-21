@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import './FaseFinal.css';
 import successSound from '../../../assets/sounds/sucess.mp3';
 import starImage from '../../../assets/star.png'; // Exemplo de ícone de estrela
@@ -46,7 +46,7 @@ const FaseFinal = () => {
     }
   };
 
-  const verificarResposta = () => {
+  const verificarResposta = useCallback(() => {
     if (resposta.join('') === palavraFinal) {
       setFeedbackTipo('acerto');
       const audio = new Audio(successSound);
@@ -54,13 +54,13 @@ const FaseFinal = () => {
     } else {
       setFeedbackTipo('erro');
     }
-  };
+  }, [resposta, palavraFinal]);
 
   useEffect(() => {
     if (!resposta.includes('')) {
       verificarResposta();
     }
-  }, [resposta]);
+  }, [resposta, verificarResposta]);
 
   const handleFinalizarClick = () => {
     navigate('/'); // Redireciona para o mapa interativo

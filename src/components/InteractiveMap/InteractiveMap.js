@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import './InteractiveMap.css';
-import trilhaImage from '../../assets/trilha.webp';
 
 function InteractiveMap({ missoesDesbloqueadas = [] }) {
   const fases = [

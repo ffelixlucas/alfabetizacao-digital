@@ -3,7 +3,6 @@ import './CompletarFrase.css';
 import FeedbackModal from '../../FeedbackModal/FeedbackModal';
 
 const CompletarFrase = ({ onCompletion }) => {
-  const frase = "O sol é ___."; // Frase simples para completar
   const respostaCorreta = "quente";
   const opcoes = ["quente", "gelado", "verde", "molhado"];
 
